@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Algorithm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #4CAF50; }
+        p { margin-bottom: 15px; }
+        a { color: #4CAF50; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 800px; margin: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>About the Task Assignment Algorithm</h1>
+
+        <p>This webpage uses a simple algorithm to assign tasks to participants every 15 days. The tasks rotate based on a fixed starting date (January 1, 2024). The task assignments are dynamic, meaning they change every 15-day period.</p>
+
+        <h2>Key Concepts:</h2>
+        <ul>
+            <li><strong>Task Rotation</strong>: Every 15 days, the tasks are rotated among the participants. Each task is assigned to one participant, and this rotation ensures that the work is distributed evenly across the participants.</li>
+            <li><strong>Supervisors</strong>: Two participants are randomly selected as supervisors for each task in every period. These supervisors are responsible for overseeing the completion of their assigned tasks.</li>
+            <li><strong>Previous, Current, and Next Periods</strong>: The tasks are displayed for three periods: the previous 15-day period, the current 15-day period, and the upcoming 15-day period. This gives users an overview of what tasks are coming up and who is responsible.</li>
+            <li><strong>CSV Logging</strong>: The task assignments are logged into a CSV file. Each entry includes the task name, the previous responsible participant, and the current participant responsible for the task, along with the current date.</li>
+        </ul>
+
+        <p>The algorithm ensures that tasks are rotated in a fair and structured way, with supervisors randomly selected to ensure oversight. You can explore how the assignments look by visiting the <a href="/">main page</a>.</p>
+
+        <h2>How the Algorithm Works:</h2>
+        <p>The algorithm begins by calculating the number of days passed since a fixed starting date (January 1, 2024). It then divides the total number of days by 15 to determine the current period. Based on the period number, tasks are assigned to participants in a rotating manner. Supervisors are also chosen randomly from the participants for each task.</p>
+
+        <h2>Want to see the task assignments?</h2>
+        <p>Go back to the <a href="/">task assignments page</a> to see the current and upcoming tasks and who is assigned to each one.</p>
+
+        <footer style="text-align: center; margin-top: 20px;">
+            <p>Created with ❤️ by the Task Assignment Team</p>
+        </footer>
+    </div>
+
+</body>
+</html>

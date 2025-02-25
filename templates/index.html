@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Assignments</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        table { width: 60%; margin: auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+        th { background-color: #f2f2f2; }
+        button { padding: 5px 10px; background: red; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkred; }
+        .link { text-align: center; margin-top: 20px; }
+        img.logo { width: 150px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Tech4Agro logo and fun emojis -->
+    <header style="text-align: center; margin-bottom: 30px;">
+        <!--<img src="img/Tech4Agro_primary.png" alt="Tech4Agro Logo" class="logo" />-->
+        <h1>Welcome to Task Assignments 🚀</h1>
+    </header>
+
+    <div class="link">
+        <a href="about">Learn more about the task assignment algorithm 🧠</a>
+    </div>
+
+    <h2>Task Assignments for {{ current_date }} 📅</h2>
+
+    <div>
+        {% for period, tasks in task_assignments.items() %}
+        <h3>{{ period }} Assignments 📝</h3>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Assigned</th>
+                <th>Supervisors</th>
+                <th>Period Start</th>
+                <th>Alert</th>
+            </tr>
+            {% for task, details in tasks.items() %}
+            <tr>
+                <td>{{ task }}</td>
+                <td>{{ details['Assigned']['name'] }} ({{ details['Assigned']['email'] }})</td>
+                <td>
+                    {% for supervisor in details['Supervisors'] %}
+                        <p>{{ supervisor['name'] }} ({{ supervisor['email'] }})</p>
+                    {% endfor %}
+                </td>
+                <td>{{ details['Period Start'] }}</td>
+                <td><button onclick="alertTask('{{ task }}', '{{ details['Assigned']['name'] }}', '{{ details['Assigned']['email'] }}')">⚠️ Alert</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+
+        <footer style="text-align: center; margin-top: 20px;">
+            <p>Created with ❤️ by the Task Assignment Team 🛠️</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function alertTask(task, assignedName, assignedEmail) {
+            const subject = encodeURIComponent(`Task Reminder: ${task}`);
+            const body = encodeURIComponent(`Dear ${assignedName},\n\nThis is a reminder that the task "${task}" needs to be solved.\n\nPlease take action as soon as possible. 🚨\n\nBest regards,\nTask Assignment Team`);
+            const mailtoLink = `mailto:${assignedEmail}?subject=${subject}&body=${body}`;
+
+            // Open the default mail client
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
