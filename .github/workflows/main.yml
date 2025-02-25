@@ -12,15 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Step 1: Checkout the repository (main branch)
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: main  # Ensure we're on the main branch to generate the build folder
 
       # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
+          python-version: '3.10'  # Adjust as necessary for your environment
 
       # Step 3: Install dependencies from requirements.txt
       - name: Install dependencies
@@ -31,23 +33,31 @@ jobs:
       # Step 4: Run the `main.py` script to generate static content
       - name: Run main.py to generate static website
         run: |
-          python main.py  # This should generate your static files in the 'build' folder
+          python main.py  # This should generate your static files, e.g., in the 'build' folder
 
-      # Step 5: Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
+      # Step 5: Create gh-pages branch if it doesn't exist
+      - name: Create gh-pages branch if it doesn't exist
         run: |
-          # Check if gh-pages branch exists, if not, create it
           git fetch origin gh-pages || git checkout --orphan gh-pages
 
-          # Remove any existing content in gh-pages branch
-          git rm -rf .
+      # Step 6: Remove existing content from gh-pages
+      - name: Clean up existing content on gh-pages
+        run: |
+          git rm -rf .  # Remove any existing files in the gh-pages branch
 
-          # Copy the static content from the 'build' folder
-          cp -r build/* .
+      # Step 7: Copy content from main branch to gh-pages
+      - name: Copy content from main to gh-pages
+        run: |
+          git checkout main -- .  # Copy all files from main branch to gh-pages
 
-          # Add and commit changes
+      # Step 8: Rename 'build' folder to 'docs'
+      - name: Rename build folder to docs
+        run: |
+          mv build docs  # Rename 'build' folder to 'docs'
+
+      # Step 9: Commit and push changes to gh-pages
+      - name: Commit and push changes to gh-pages
+        run: |
           git add .
           git commit -m "Deploy static files to GitHub Pages"
-
-          # Push to the gh-pages branch
           git push origin gh-pages --force
