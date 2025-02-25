@@ -12,11 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository (main branch)
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: main  # Ensure we're on the main branch to generate the build folder
 
       # Step 2: Set up Python
       - name: Set up Python
@@ -35,29 +33,10 @@ jobs:
         run: |
           python main.py  # This should generate your static files, e.g., in the 'build' folder
 
-      # Step 5: Create gh-pages branch if it doesn't exist
-      - name: Create gh-pages branch if it doesn't exist
-        run: |
-          git fetch origin gh-pages || git checkout --orphan gh-pages
-
-      # Step 6: Remove existing content from gh-pages
-      - name: Clean up existing content on gh-pages
-        run: |
-          git rm -rf .  # Remove any existing files in the gh-pages branch
-
-      # Step 7: Copy content from main branch to gh-pages
-      - name: Copy content from main to gh-pages
-        run: |
-          git checkout main -- .  # Copy all files from main branch to gh-pages
-
-      # Step 8: Rename 'build' folder to 'docs'
-      - name: Rename build folder to docs
-        run: |
-          mv build docs  # Rename 'build' folder to 'docs'
-
-      # Step 9: Commit and push changes to gh-pages
-      - name: Commit and push changes to gh-pages
-        run: |
-          git add .
-          git commit -m "Deploy static files to GitHub Pages"
-          git push origin gh-pages --force
+      # Step 5: Deploy to GitHub Pages using the github-pages-deploy-action
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch to deploy to
+          folder: build  # The folder containing the generated static files (build folder in this case)
+          target_folder: docs  # Optional: If you want to rename 'build' folder to 'docs' for deployment
