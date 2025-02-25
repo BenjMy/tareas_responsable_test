@@ -3,11 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger the action when pushing to the `main` branch (or any branch you want)
+      - main  # Trigger on pushes to the main branch
+
+  workflow_dispatch:  # Allow manual triggers
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -17,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # You can adjust the Python version as needed
+          python-version: '3.8'  # Adjust as necessary for your environment
 
       # Step 3: Install dependencies from requirements.txt
       - name: Install dependencies
@@ -25,21 +28,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Build project (if necessary)
-      # If your project requires a build step (e.g., generating static files), include it here
-      # For example, if you're using a static site generator like Jekyll, Hugo, or Pelican:
-      - name: Build static site
+      # Step 4: Run the `main.py` script to generate static content
+      - name: Run main.py to generate static website
         run: |
-          # Example for Pelican, adjust to your needs
-          pelican content -o output -s pelicanconf.py
-          
+          python main.py  # This should generate your static files, e.g., in the 'output' folder
+
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.1.0
+        uses: JamesIves/github-pages-deploy-action@v4.2.0  # Latest stable version
         with:
-          branch: gh-pages  # The branch you want to deploy to
-          folder: output  # The folder containing your generated site (adjust if necessary)
+          branch: gh-pages  # The branch to deploy to
+          folder: output  # The folder containing the generated static files
 
-      # Optional Step 6: Clean up (delete the build folder if desired)
-      # - name: Clean up build
-      #   run: rm -rf output  # Adjust if you're using a different folder name
