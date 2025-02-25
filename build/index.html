@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Assignments</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        table { width: 60%; margin: auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+        th { background-color: #f2f2f2; }
+        button { padding: 5px 10px; background: red; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkred; }
+        .link { text-align: center; margin-top: 20px; }
+        img.logo { width: 150px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Tech4Agro logo and fun emojis -->
+    <header style="text-align: center; margin-bottom: 30px;">
+        <img src="/static/img/Tech4Agro_primary.png" alt="Tech4Agro Logo" class="logo" />
+        <h1>Welcome to Task Assignments 🚀</h1>
+    </header>
+
+    <div class="link">
+        <a href="about.html">Learn more about the task assignment algorithm 🧠</a>
+    </div>
+
+    <h2>Task Assignments for February 25, 2025 📅</h2>
+
+    <div>
+        
+        <h3>Previous Assignments 📝</h3>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Assigned</th>
+                <th>Supervisors</th>
+                <th>Period Start</th>
+                <th>Alert</th>
+            </tr>
+            
+            <tr>
+                <td>Clean Coffee Machine</td>
+                <td>Alice (alice@example.com)</td>
+                <td>
+                    
+                        <p>Bob (bob@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>February 09, 2025</td>
+                <td><button onclick="alertTask('Clean Coffee Machine', 'Alice', 'alice@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Clean Garbage Plastic</td>
+                <td>Bob (bob@example.com)</td>
+                <td>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                </td>
+                <td>February 09, 2025</td>
+                <td><button onclick="alertTask('Clean Garbage Plastic', 'Bob', 'bob@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Buy New Paper for Printer</td>
+                <td>Charlie (charlie@example.com)</td>
+                <td>
+                    
+                        <p>David (david@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>February 09, 2025</td>
+                <td><button onclick="alertTask('Buy New Paper for Printer', 'Charlie', 'charlie@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Get New Papel de Mano</td>
+                <td>David (david@example.com)</td>
+                <td>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                </td>
+                <td>February 09, 2025</td>
+                <td><button onclick="alertTask('Get New Papel de Mano', 'David', 'david@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+        </table>
+        
+        <h3>Current Assignments 📝</h3>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Assigned</th>
+                <th>Supervisors</th>
+                <th>Period Start</th>
+                <th>Alert</th>
+            </tr>
+            
+            <tr>
+                <td>Clean Coffee Machine</td>
+                <td>Alice (alice@example.com)</td>
+                <td>
+                    
+                        <p>Bob (bob@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>February 24, 2025</td>
+                <td><button onclick="alertTask('Clean Coffee Machine', 'Alice', 'alice@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Clean Garbage Plastic</td>
+                <td>Bob (bob@example.com)</td>
+                <td>
+                    
+                        <p>David (david@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>February 24, 2025</td>
+                <td><button onclick="alertTask('Clean Garbage Plastic', 'Bob', 'bob@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Buy New Paper for Printer</td>
+                <td>Charlie (charlie@example.com)</td>
+                <td>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>February 24, 2025</td>
+                <td><button onclick="alertTask('Buy New Paper for Printer', 'Charlie', 'charlie@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Get New Papel de Mano</td>
+                <td>David (david@example.com)</td>
+                <td>
+                    
+                        <p>David (david@example.com)</p>
+                    
+                        <p>Bob (bob@example.com)</p>
+                    
+                </td>
+                <td>February 24, 2025</td>
+                <td><button onclick="alertTask('Get New Papel de Mano', 'David', 'david@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+        </table>
+        
+        <h3>Next Assignments 📝</h3>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Assigned</th>
+                <th>Supervisors</th>
+                <th>Period Start</th>
+                <th>Alert</th>
+            </tr>
+            
+            <tr>
+                <td>Clean Coffee Machine</td>
+                <td>Alice (alice@example.com)</td>
+                <td>
+                    
+                        <p>David (david@example.com)</p>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                </td>
+                <td>March 11, 2025</td>
+                <td><button onclick="alertTask('Clean Coffee Machine', 'Alice', 'alice@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Clean Garbage Plastic</td>
+                <td>Bob (bob@example.com)</td>
+                <td>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                        <p>Bob (bob@example.com)</p>
+                    
+                </td>
+                <td>March 11, 2025</td>
+                <td><button onclick="alertTask('Clean Garbage Plastic', 'Bob', 'bob@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Buy New Paper for Printer</td>
+                <td>Charlie (charlie@example.com)</td>
+                <td>
+                    
+                        <p>David (david@example.com)</p>
+                    
+                        <p>Charlie (charlie@example.com)</p>
+                    
+                </td>
+                <td>March 11, 2025</td>
+                <td><button onclick="alertTask('Buy New Paper for Printer', 'Charlie', 'charlie@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+            <tr>
+                <td>Get New Papel de Mano</td>
+                <td>David (david@example.com)</td>
+                <td>
+                    
+                        <p>Alice (alice@example.com)</p>
+                    
+                        <p>Bob (bob@example.com)</p>
+                    
+                </td>
+                <td>March 11, 2025</td>
+                <td><button onclick="alertTask('Get New Papel de Mano', 'David', 'david@example.com')">⚠️ Alert</button></td>
+            </tr>
+            
+        </table>
+        
+
+        <footer style="text-align: center; margin-top: 20px;">
+            <p>Created with ❤️ by the Task Assignment Team 🛠️</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function alertTask(task, assignedName, assignedEmail) {
+            const subject = encodeURIComponent(`Task Reminder: ${task}`);
+            const body = encodeURIComponent(`Dear ${assignedName},\n\nThis is a reminder that the task "${task}" needs to be solved.\n\nPlease take action as soon as possible. 🚨\n\nBest regards,\nTask Assignment Team`);
+            const mailtoLink = `mailto:${assignedEmail}?subject=${subject}&body=${body}`;
+
+            // Open the default mail client
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>

@@ -19,12 +19,12 @@
 
     <!-- Header with Tech4Agro logo and fun emojis -->
     <header style="text-align: center; margin-bottom: 30px;">
-        <!--<img src="img/Tech4Agro_primary.png" alt="Tech4Agro Logo" class="logo" />-->
+        <img src="{{ url_for('static', filename='img/Tech4Agro_primary.png') }}" alt="Tech4Agro Logo" class="logo" />
         <h1>Welcome to Task Assignments 🚀</h1>
     </header>
 
     <div class="link">
-        <a href="about">Learn more about the task assignment algorithm 🧠</a>
+        <a href="about.html">Learn more about the task assignment algorithm 🧠</a>
     </div>
 
     <h2>Task Assignments for {{ current_date }} 📅</h2>

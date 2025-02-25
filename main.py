@@ -3,8 +3,12 @@ import os
 import datetime
 import random
 from flask import Flask, render_template, request, jsonify
+from flask_frozen import Freezer
 
 app = Flask(__name__)
+
+# Initialize Flask-Frozen
+freezer = Freezer(app)
 
 # Participants and Tasks
 participants = [
@@ -85,9 +89,11 @@ def alert():
     person = task_assignments["Current"][task]["Assigned"]
     return jsonify({"message": f"Alert sent to {person['name']} ({person['email']}) about '{task}'!"})
 
-@app.route("/about")
+@app.route("/about.html")
 def about():
     return render_template("about.html")
 
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    freezer.freeze()  # This will freeze the app into static files
