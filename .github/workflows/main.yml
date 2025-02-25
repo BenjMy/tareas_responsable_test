@@ -36,9 +36,18 @@ jobs:
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          git checkout gh-pages
+          # Check out the gh-pages branch or create it if it doesn't exist
+          git checkout -b gh-pages || git checkout gh-pages
+          
+          # Remove any existing content
           git rm -rf .
+
+          # Copy the static content from the 'build' folder
           cp -r build/* .
+
+          # Add and commit changes
           git add .
           git commit -m "Deploy static files to GitHub Pages"
-          git push origin gh-pages
+
+          # Push to the gh-pages branch
+          git push origin gh-pages --force
