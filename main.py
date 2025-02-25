@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_frozen import Freezer
 
 app = Flask(__name__)
-
+app.config['FREEZER_DESTINATION'] = 'docs'
 # Initialize Flask-Frozen
 freezer = Freezer(app)
 
