@@ -36,10 +36,10 @@ jobs:
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          # Check out the gh-pages branch or create it if it doesn't exist
-          git checkout -b gh-pages || git checkout gh-pages
-          
-          # Remove any existing content
+          # Check if gh-pages branch exists, if not, create it
+          git fetch origin gh-pages || git checkout --orphan gh-pages
+
+          # Remove any existing content in gh-pages branch
           git rm -rf .
 
           # Copy the static content from the 'build' folder
