@@ -19,8 +19,8 @@
 
     <!-- Header with Tech4Agro logo and fun emojis -->
     <header style="text-align: center; margin-bottom: 30px;">
-        <img src="{{ url_for('static', filename='img/Tech4Agro_primary.png') }}" alt="Tech4Agro Logo" class="logo" />
-        <h1>Welcome to Task Assignments 🚀</h1>
+        <img src="{{ url_for('static', filename='img/Tech4Agro_primary.png') }}" alt="Tech4Agro Logo" class="logo" width="150" />
+        <h1>Welcome to Tech4agro task assignments 🚀</h1>
     </header>
 
     <div class="link">
@@ -30,6 +30,13 @@
     <h2>Task Assignments for {{ current_date }} 📅</h2>
 
     <div>
+        {% set task_emojis = {
+            "Clean Coffee Machine": "☕",
+            "Clean Garbage Plastic": "🗑️",
+            "Buy New Paper for Printer": "📄",
+            "Get New Papel de Mano": "📝"
+        } %}
+
         {% for period, tasks in task_assignments.items() %}
         <h3>{{ period }} Assignments 📝</h3>
         <table>
@@ -42,15 +49,22 @@
             </tr>
             {% for task, details in tasks.items() %}
             <tr>
-                <td>{{ task }}</td>
-                <td>{{ details['Assigned']['name'] }} ({{ details['Assigned']['email'] }})</td>
+                <td>{{ task_emojis[task] }} {{ task }}</td> <!-- Display task with emoji -->
+                <td>
+                    {% for participant in details['Assigned'] %}
+                        <p>{{ participant['name'] }} ({{ participant['email'] }})</p>
+                    {% endfor %}
+                </td>
                 <td>
                     {% for supervisor in details['Supervisors'] %}
                         <p>{{ supervisor['name'] }} ({{ supervisor['email'] }})</p>
                     {% endfor %}
                 </td>
                 <td>{{ details['Period Start'] }}</td>
-                <td><button onclick="alertTask('{{ task }}', '{{ details['Assigned']['name'] }}', '{{ details['Assigned']['email'] }}')">⚠️ Alert</button></td>
+                <td>
+                    <!-- Properly pass the names and emails as strings to JavaScript -->
+                    <button onclick="alertTask('{{ task }}', '{{ details['Assigned']|map(attribute='name')|join(', ') }}', '{{ details['Assigned']|map(attribute='email')|join(', ') }}')">⚠️ Alert</button>
+                </td>
             </tr>
             {% endfor %}
         </table>
@@ -63,14 +77,20 @@
     </div>
 
     <script>
-        function alertTask(task, assignedName, assignedEmail) {
-            const subject = encodeURIComponent(`Task Reminder: ${task}`);
-            const body = encodeURIComponent(`Dear ${assignedName},\n\nThis is a reminder that the task "${task}" needs to be solved.\n\nPlease take action as soon as possible. 🚨\n\nBest regards,\nTask Assignment Team`);
-            const mailtoLink = `mailto:${assignedEmail}?subject=${subject}&body=${body}`;
+        function alertTask(task, assignedNames, assignedEmails) {
+            // Decode the names and emails from the passed strings
+            const namesArray = assignedNames.split(', ');
+            const emailsArray = assignedEmails.split(', ');
 
-            // Open the default mail client
+            // Join the names and emails into a single string for the mailto link
+            const subject = encodeURIComponent(`Task Reminder: ${task}`);
+            const body = encodeURIComponent(`Dear ${namesArray.join(", ")},\n\nThis is a reminder that the task "${task}" needs to be solved.\n\nPlease take action as soon as possible. 🚨\n\nBest regards,\nTask Assignment Team`);
+            const mailtoLink = `mailto:${emailsArray.join(", ")}?subject=${subject}&body=${body}`;
+
+            // Open the default mail client with the generated mailto link
             window.location.href = mailtoLink;
         }
     </script>
 </body>
 </html>
+
