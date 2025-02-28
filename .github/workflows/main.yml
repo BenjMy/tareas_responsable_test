@@ -28,7 +28,7 @@ jobs:
 
       - name: Add extra files for GitHub pages
         run: |
-          touch _build/.nojekyll
+          touch docs/.nojekyll
 
       - name: Push to gh-pages
         if: success() && github.event_name == 'push'
