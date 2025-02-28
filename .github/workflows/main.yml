@@ -29,13 +29,3 @@ jobs:
       - name: Add extra files for GitHub pages
         run: |
           touch docs/.nojekyll
-
-      - name: Push to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # Change this if deploying to a different branch
-          publish_dir: ./docs
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
