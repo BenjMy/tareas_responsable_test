@@ -19,7 +19,7 @@
 
     <!-- Header with Tech4Agro logo and fun emojis -->
     <header style="text-align: center; margin-bottom: 30px;">
-        <img src="{{ url_for('static', filename='img/Tech4Agro_primary.png') }}" alt="Tech4Agro Logo" class="logo" width="150" />
+        <!--<img src="{{ url_for('static', filename='img/Tech4Agro_primary.png') }}" alt="Tech4Agro Logo" class="logo" width="150" />-->
         <h1>Welcome to Tech4agro task assignments 🚀</h1>
     </header>
 
@@ -52,12 +52,12 @@
                 <td>{{ task_emojis[task] }} {{ task }}</td> <!-- Display task with emoji -->
                 <td>
                     {% for participant in details['Assigned'] %}
-                        <p>{{ participant['name'] }} ({{ participant['email'] }})</p>
+                        <p>{{ participant['name'] }}</p>
                     {% endfor %}
                 </td>
                 <td>
                     {% for supervisor in details['Supervisors'] %}
-                        <p>{{ supervisor['name'] }} ({{ supervisor['email'] }})</p>
+                        <p>{{ supervisor['name'] }}</p>
                     {% endfor %}
                 </td>
                 <td>{{ details['Period Start'] }}</td>
