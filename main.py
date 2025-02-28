@@ -28,7 +28,7 @@ participants = [
     {"name": "Nieto Hector", "email": "hector.nieto@ica.csic.es"},
     {"name": "Olivares Guillermo", "email": "golivares@ica.csic.es"},
     {"name": "Peña Jose Manuel", "email": "jmpena@ica.csic.es"},
-    {"name": "Rueda Christian", "email": "christian.rueda@inia.csic.es"},
+    #{"name": "Rueda Christian", "email": "christian.rueda@inia.csic.es"},
     {"name": "Miguel Ángel Herrezuelo Bermúdez", "email": "miguel.herrezuelo@ica.csic.es"},
     {"name": "Jose Dorado", "email": "jose.dorado@csic.es"}
 ]
