@@ -6,7 +6,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 0 */15 * *'  # This triggers the workflow every 15 days at midnight UTC
+    
 jobs:
   build:
     runs-on: ubuntu-latest
